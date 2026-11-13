@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockPro | Sistema de Gestão de Estoque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-wrapper">
+        
+        <!-- 🏢 Cabeçalho Profissional (Título + Dupla) -->
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-badge">V5.0</span>
+                <div>
+                    <h1>Gestão de Estoque</h1>
+                    <p class="subtitle">Controle patrimonial e inventário em tempo real</p>
+                </div>
+            </div>
+
+            <!-- 👥 Cards da Dupla no Topo -->
+            <div class="equipe-header">
+                <div class="dev-pill">
+                    <img src="PHOTO-2026-11-13-10-59-28.jpg" alt="Sua Foto" class="dev-foto">
+                    <div class="dev-info">
+                        <span class="dev-role">Desenvolvedor</span>
+                        <span class="dev-nome">Davi</span>
+                    </div>
+                </div>
+                <div class="dev-pill">
+                    <img src="PHOTO-2026-11-13-10-51-35.jpg" alt="Foto da Dupla" class="dev-foto">
+                    <div class="dev-info">
+                        <span class="dev-role">Desenvolvedora</span>
+                        <span class="dev-nome">Beatriz</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+
+            <!-- 🔴 Mensagem Inline de Erro (Substitui alert) -->
+            <div id="mensagem-erro" class="mensagem-erro oculto"></div>
+
+            <!-- 📝 Painel de Cadastro -->
+            <section class="card-section">
+                <h2 class="section-title">Novo Produto</h2>
+                <form id="produto-form">
+                    <div class="form-group">
+                        <label for="nome">Nome do Produto</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Ex.: Notebook Dell Inspiron"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preco">Preço Unitário (R$)</label>
+                        <input
+                            type="number"
+                            step="0.01"
+                            id="preco"
+                            placeholder="0,00"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantidade">Qtd. em Estoque</label>
+                        <input
+                            type="number"
+                            id="quantidade"
+                            placeholder="0"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            + Adicionar ao Estoque
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- 📊 Painel de Resumo (KPI) e Busca -->
+            <section class="toolbar-section">
+                <div class="kpi-card">
+                    <span class="kpi-label">Patrimônio Filtrado</span>
+                    <h3 id="total-estoque">Total em Estoque: R$ 0,00</h3>
+                </div>
+
+                <div class="search-and-actions">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="campo-busca" 
+                            placeholder="🔍 Filtrar produtos por nome..."
+                        >
+                    </div>
+                    <button id="limpar-tabela" class="btn-danger" type="button">
+                        Limpar Estoque
+                    </button>
+                </div>
+            </section>
+
+            <!-- 📋 Tabela de Dados -->
+            <section class="table-wrapper">
+                <table id="tabela-produtos">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th class="text-right">Preço Un.</th>
+                            <th class="text-center">Qtd.</th>
+                            <th class="text-right">Subtotal</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+
+        <!-- 📚 Rodapé Técnico -->
+        <footer class="app-footer">
+            <p>Sistema desenvolvido com Programação Orientada a Objetos & LocalStorage</p>
+            <button id="abrir-modal-bootstrap" class="btn-outline">Ver Conceito Bootstrap</button>
+        </footer>
+
+    </div>
+
+    <!-- 🪟 MODAL DE CONFIRMAÇÃO CUSTOMIZADO -->
+    <div id="modal-confirmacao" class="modal-overlay oculto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirmar Exclusão</h3>
+            </div>
+            <p id="modal-mensagem">Tem certeza que deseja realizar esta operação?</p>
+            <div class="modal-acoes">
+                <button id="btn-cancelar-modal" class="btn-secundario">Cancelar</button>
+                <button id="btn-confirmar-modal" class="btn-danger-solid">Sim, Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📚 MODAL DO CONCEITO BOOTSTRAP -->
+    <div id="modal-bootstrap" class="modal-overlay oculto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Arquitetura & Conceito Bootstrap</h3>
+            </div>
+            <p>O Bootstrap é um framework front-end que acelera o desenvolvimento de interfaces responsivas através de um sistema de grid flexível e componentes pré-estilizados (como Modais, Alerts e Badges), garantindo consistência visual em qualquer dispositivo.</p>
+            <div class="modal-acoes">
+                <button id="btn-fechar-bootstrap" class="btn-primary">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
